@@ -11,7 +11,7 @@ import {
   hideLoadMoreButton,
 } from './js/render-functions.js';
 
-// Пошук елементів DOM за правильним класом `.form`
+// Елементи DOM
 const form = document.querySelector('.form');
 const loadMoreBtn = document.querySelector('.load-more');
 
@@ -24,12 +24,11 @@ form.addEventListener('submit', handleSearch);
 loadMoreBtn.addEventListener('click', handleLoadMore);
 
 /**
- * Обробник сабміту форми (Перша сторінка пошуку)
+ * Обробник події сабміту форми (Перший пошук)
  */
 async function handleSearch(event) {
   event.preventDefault();
 
-  // Отримуємо значення з інпуту
   searchQuery = event.currentTarget.elements.searchQuery.value.trim();
   
   // Перевірка на порожній інпут
@@ -41,7 +40,7 @@ async function handleSearch(event) {
     return;
   }
 
-  // Скидання параметрів перед новим пошуком
+  // Скидання параметрів
   page = 1;
   clearGallery();
   hideLoadMoreButton();
@@ -59,10 +58,10 @@ async function handleSearch(event) {
       return;
     }
 
-    // Рендеримо галерею
+    // Рендер карток
     createGallery(data.hits);
 
-    // Перевірка на кінець колекції вже на першій сторінці (Зауваження ментора)
+    // ВИПРАВЛЕННЯ ДЛЯ МЕНТОРА: Перевірка на малу кількість результатів (кінець колекції на 1-й сторінці)
     if (data.totalHits <= perPage) {
       iziToast.info({
         message: "We're sorry, but you've reached the end of search results.",
@@ -78,31 +77,31 @@ async function handleSearch(event) {
     });
   } finally {
     hideLoader();
-    form.reset(); // Очищаємо інпут форми після сабміту
+    form.reset(); // Очищення форми
   }
 }
 
 /**
- * Обробник кліку на кнопку "Load more" (Пагінація)
+ * Обробник події для кнопки "Load more" (Пагінація)
  */
 async function handleLoadMore() {
   page += 1;
-  hideLoadMoreButton(); // Ховаємо кнопку на час завантаження нових даних
+  hideLoadMoreButton(); // Ховаємо кнопку на час запиту
   showLoader();
 
   try {
     const data = await getImagesByQuery(searchQuery, page);
     
-    // Додаємо нові картки до вже існуючих
+    // Додаємо нові елементи до вже існуючих
     createGallery(data.hits);
 
-    // Плавний скрол сторінки вниз на дві висоти картки
+    // Плавний скрол
     smoothScroll();
 
     // Вираховуємо максимальну кількість сторінок
     const totalPages = Math.ceil(data.totalHits / perPage);
     
-    // Перевіряємо, чи дійшли ми до кінця колекції
+    // Перевірка на кінець колекції для наступних сторінок
     if (page >= totalPages) {
       iziToast.info({
         message: "We're sorry, but you've reached the end of search results.",
@@ -122,7 +121,7 @@ async function handleLoadMore() {
 }
 
 /**
- * Функція для плавного прокручування сторінки
+ * Функція плавного прокручування
  */
 function smoothScroll() {
   const galleryItem = document.querySelector('.gallery-item');
