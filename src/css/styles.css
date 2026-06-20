@@ -16,3 +16,143 @@
 @import url('./badges.css');
 @import url('./back-link.css');
 @import url('./footer.css');
+
+/* Базові скидання стилів */
+box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: #f5f5f5;
+  color: #2e2f42;
+  margin: 0;
+  padding: 24px;
+}
+
+/* Форма пошуку */
+.form {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.form input {
+  width: 272px;
+  height: 40px;
+  padding: 8px 16px;
+  border: 1px solid #808080;
+  border-radius: 4px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form input:hover,
+.form input:focus {
+  border-color: #4e75ff;
+}
+
+.form button {
+  padding: 8px 20px;
+  height: 40px;
+  background-color: #4e75ff;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form button:hover {
+  background-color: #6c8cff;
+}
+
+/* Галерея зображень (Сітка) */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 24px;
+  list-style: none;
+  padding: 0;
+  max-width: 1128px;
+  margin: 0 auto 32px auto;
+}
+
+.gallery-item {
+  background: #ffffff;
+  border: 1px solid #808080;
+  border-top: none;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery-link {
+  display: block;
+  text-decoration: none;
+  cursor: zoom-in;
+  height: 200px; /* Фіксована висота для картинок, щоб сітка була рівною */
+}
+
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-image:hover {
+  transform: scale(1.03);
+}
+
+/* Блок інфо під картинкою */
+.info {
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 4px;
+  background-color: #ffffff;
+  border-top: 1px solid #808080;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  line-height: 1.33;
+  margin: 0;
+}
+
+.info-item b {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.33;
+}
+
+/* Контейнер для кнопки та лоадера */
+.controls-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 32px;
+  min-height: 50px;
+}
+
+/* Кнопка Load More */
+.load-more {
+  padding: 8px 16px;
+  min-width: 120px;
+  height: 40px;
+  background-color: #4e75ff;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color

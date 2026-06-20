@@ -11,23 +11,23 @@
     <load src="./partials/header.html" icon-path="img/sprite.svg#logo" />
 
     <main>
-      <form class="search-form">
-        <input
-          type="text"
-          name="searchQuery"
-          autocomplete="off"
-          placeholder="Search images..."
-        />
-        <button type="submit">Search</button>
-      </form>
+  <form class="form">
+    <input
+      type="text"
+      name="searchQuery"
+      autocomplete="off"
+      placeholder="Search images..."
+    />
+    <button type="submit">Search</button>
+  </form>
 
-      <ul class="gallery"></ul>
+  <ul class="gallery"></ul>
 
-      <div class="controls-container">
-        <button type="button" class="load-more is-hidden">Load more</button>
-        <span class="loader is-hidden"></span>
-      </div>
-    </main>
+  <div class="controls-container">
+    <button type="button" class="load-more is-hidden">Load more</button>
+    <span class="loader is-hidden">Loading...</span>
+  </div>
+</main>
 
     <load src="./partials/footer.html" />
 
