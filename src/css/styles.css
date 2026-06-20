@@ -18,7 +18,8 @@
 @import url('./footer.css');
 
 /* Базові скидання стилів */
-box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
 
 body {
